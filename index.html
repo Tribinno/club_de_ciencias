@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La fauna y los bosques nativos de Punilla necesitan nuestra ayuda.">
+  <title>Monte vivo | Punilla</title>
+  <link rel="stylesheet" href="inde.css">
+</head>
+<body>
+  <header><a href="#">MONTE VIVO · PUNILLA</a></header>
+  <section class="hero">
+    <small>Sierras de Córdoba</small>
+    <h1>Sin monte, no hay hogar.</h1>
+    <p>La deforestación y los incendios amenazan los ambientes naturales y la fauna de Punilla. Cuidar el monte es proteger la vida.</p>
+  </section>
+  <main>
+    <h2>Animales que necesitan un monte sano</h2>
+    <p class="info">La pérdida de hábitat afecta a muchas especies. Entre ellas, el gato montés, el zorro gris y el águila coronada, amenazada en Argentina.</p>
+    <form class="buscador" id="form-busqueda" role="search">
+      <label for="busqueda">Buscar un animal</label>
+      <div class="buscador-campo">
+        <input id="busqueda" type="search" placeholder="Ej.: águila coronada" autocomplete="off">
+        <button type="submit">Buscar</button>
+      </div>
+    </form>
+    <p class="sin-resultados" id="sin-resultados" role="status" hidden>No encontramos animales con esa búsqueda.</p>
+    <div class="fauna" id="lista-fauna">
+      <article><h3>Gato montés</h3><p>Felino nativo que necesita espacios naturales para refugiarse y desplazarse.</p></article>
+      <article><h3>Zorro gris</h3><p>Habitante de la región; conservar el monte ayuda a cuidar su entorno.</p></article>
+      <article><h3>Águila coronada</h3><p>Especie amenazada: necesita ambientes naturales extensos y conectados.</p></article>
+    </div>
+    <div class="callout"><strong>¿Cómo ayudar?</strong> Evitá hacer fuego, elegí plantas nativas y respetá a los animales silvestres. <span class="info">Las fotos y ejemplos pueden no corresponder a avistajes locales.</span></div>
+  </main>
+  <footer>Conocer el monte es el primer paso para protegerlo.</footer>
+  <script src="index.js" defer></script>
+</body>
+</html>
