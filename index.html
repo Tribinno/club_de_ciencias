@@ -3,36 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="La fauna y los bosques nativos de Punilla necesitan nuestra ayuda.">
-  <title>Monte vivo | Punilla</title>
-  <link rel="stylesheet" href="inde.css">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Explorá la biodiversidad de Córdoba: animales y plantas nativos, sus hábitats y fuentes de información.">
+  <title>Biodiversidad de Córdoba | Monte vivo</title>
+  <link rel="preconnect" href="https://upload.wikimedia.org">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header><a href="#">MONTE VIVO · PUNILLA</a></header>
-  <section class="hero">
-    <small>Sierras de Córdoba</small>
-    <h1>Sin monte, no hay hogar.</h1>
-    <p>La deforestación y los incendios amenazan los ambientes naturales y la fauna de Punilla. Cuidar el monte es proteger la vida.</p>
-  </section>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Monte vivo, inicio">
+      <span class="brand-mark" aria-hidden="true">✳</span>
+      <span>BIODIVERSIDAD <span class="brand-light">DE CÓRDOBA</span><small>MONTE VIVO · ARGENTINA</small></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="#especies">Especies</a>
+      <a href="#incendios">Incendios</a>
+      <a class="nav-cta" href="#ayudar">Cómo ayudar <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
   <main>
-    <h2>Animales que necesitan un monte sano</h2>
-    <p class="info">La pérdida de hábitat afecta a muchas especies. Entre ellas, el gato montés, el zorro gris y el águila coronada, amenazada en Argentina.</p>
-    <form class="buscador" id="form-busqueda" role="search">
-      <label for="busqueda">Buscar un animal</label>
-      <div class="buscador-campo">
-        <input id="busqueda" type="search" placeholder="Ej.: águila coronada" autocomplete="off">
-        <button type="submit">Buscar</button>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-image" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="eyebrow-line"></span> SIERRAS Y MONTE NATIVO</p>
+        <h1 id="hero-title">Biodiversidad<br>de <em>Córdoba.</em></h1>
+        <p class="hero-copy">Entre sierras, bosques, pastizales y humedales, una enorme variedad de seres vivos encuentra su hogar. Conocé algunas de sus especies nativas.</p>
+        <a class="button button-light" href="#especies">Explorá las especies <span aria-hidden="true">↓</span></a>
       </div>
-    </form>
-    <p class="sin-resultados" id="sin-resultados" role="status" hidden>No encontramos animales con esa búsqueda.</p>
-    <div class="fauna" id="lista-fauna">
-      <article><h3>Gato montés</h3><p>Felino nativo que necesita espacios naturales para refugiarse y desplazarse.</p></article>
-      <article><h3>Zorro gris</h3><p>Habitante de la región; conservar el monte ayuda a cuidar su entorno.</p></article>
-      <article><h3>Águila coronada</h3><p>Especie amenazada: necesita ambientes naturales extensos y conectados.</p></article>
-    </div>
-    <div class="callout"><strong>¿Cómo ayudar?</strong> Evitá hacer fuego, elegí plantas nativas y respetá a los animales silvestres. <span class="info">Las fotos y ejemplos pueden no corresponder a avistajes locales.</span></div>
+      <div class="hero-note"><span class="note-dot"></span> CÓRDOBA · ARGENTINA <span class="note-divider"></span> 31°25′ S, 64°11′ O</div>
+      <div class="hero-side-label" aria-hidden="true">MONTE VIVO · 01</div>
+    </section>
+
+    <section class="intro section-wrap">
+      <p class="eyebrow eyebrow-dark">UN ECOSISTEMA, MUCHAS VIDAS</p>
+      <div class="intro-grid">
+        <h2>El monte no es<br>un paisaje vacío.</h2>
+        <div class="intro-copy">
+          <p>Las sierras, el Chaco Seco, el Espinal y los humedales reúnen ambientes muy distintos. Su flora y fauna nativas sostienen relaciones ecológicas que hacen de Córdoba una provincia diversa.</p>
+          <a class="text-link" href="#incendios">Entender qué está en juego <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="intro-stats" aria-label="El monte es hogar de muchas formas de vida">
+        <div><span class="stat-mark">01</span><strong>Refugio</strong><small>para la fauna nativa</small></div>
+        <div><span class="stat-mark">02</span><strong>Conexión</strong><small>entre ambientes naturales</small></div>
+        <div><span class="stat-mark">03</span><strong>Equilibrio</strong><small>para la vida que compartimos</small></div>
+      </div>
+    </section>
+
+    <section class="species-section" id="especies" aria-labelledby="species-title">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark">ESPECIES NATIVAS · CÓRDOBA</p>
+            <h2 id="species-title">Una provincia, muchas vidas</h2>
+          </div>
+          <p>Explorá animales y plantas propios de la región, conocé sus hábitats y consultá las fuentes de cada ficha.</p>
+        </div>
+        <form class="buscador" id="form-busqueda" role="search">
+          <label for="busqueda">Buscá una especie por su nombre</label>
+          <div class="buscador-campo">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="busqueda" type="search" placeholder="Ej.: puma, tabaquillo..." autocomplete="off">
+            <button type="submit" aria-label="Buscar especie">Buscar <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+        <div class="filter-row" role="group" aria-label="Filtrar por grupo">
+          <span>GRUPO</span>
+          <button type="button" class="filter-button active" data-filter="todos" aria-pressed="true">Todas</button>
+          <button type="button" class="filter-button" data-filter="animal" aria-pressed="false">Animales</button>
+          <button type="button" class="filter-button" data-filter="planta" aria-pressed="false">Plantas</button>
+          <label class="category-select-label" for="filtro-categoria">Categoría</label>
+          <select id="filtro-categoria" aria-label="Filtrar por categoría">
+            <option value="todas">Todas las categorías</option>
+            <option value="mamifero">Mamíferos</option>
+            <option value="ave">Aves</option>
+            <option value="reptil">Reptiles</option>
+            <option value="anfibio">Anfibios</option>
+            <option value="planta">Plantas</option>
+          </select>
+        </div>
+        <p class="sin-resultados" id="sin-resultados" role="status" hidden>No encontramos especies con esa búsqueda.</p>
+        <p class="results-count" id="results-count" aria-live="polite"></p>
+        <div class="fauna" id="lista-fauna"></div>
+        <p class="source-note">Las fichas distinguen entre información verificada y datos sin confirmación suficiente. Las fotos y sus atribuciones se enlazan a sus fuentes originales.</p>
+      </div>
+    </section>
+
+    <dialog class="species-dialog" id="species-dialog" aria-labelledby="dialog-title">
+      <form method="dialog" class="dialog-close-form">
+        <button class="dialog-close" aria-label="Cerrar ficha">×</button>
+      </form>
+      <div id="dialog-content"></div>
+    </dialog>
+
+    <section class="fire-section" id="incendios" aria-labelledby="fire-title">
+      <div class="fire-image" aria-hidden="true"></div>
+      <div class="fire-content">
+        <p class="eyebrow">CUANDO EL FUEGO AVANZA</p>
+        <h2 id="fire-title">El incendio termina.<br>El impacto, no.</h2>
+        <p class="fire-lead">El fuego puede destruir refugios y alimento en minutos. Después, el suelo queda expuesto y la recuperación del monte es lenta.</p>
+        <div class="fire-tabs" role="tablist" aria-label="Impacto de los incendios">
+          <button type="button" role="tab" id="tab-antes" aria-selected="true" aria-controls="panel-incendio" data-tab="antes">Antes</button>
+          <button type="button" role="tab" id="tab-durante" aria-selected="false" aria-controls="panel-incendio" data-tab="durante" tabindex="-1">Durante</button>
+          <button type="button" role="tab" id="tab-despues" aria-selected="false" aria-controls="panel-incendio" data-tab="despues" tabindex="-1">Después</button>
+        </div>
+        <div class="fire-panel" id="panel-incendio" role="tabpanel" aria-labelledby="tab-antes" tabindex="0" aria-live="polite">
+          <span class="panel-index">01</span>
+          <div><h3>Un territorio más frágil</h3><p>La sequía, el viento y la vegetación seca pueden favorecer la propagación. La prevención empieza mucho antes de ver humo.</p></div>
+        </div>
+        <a class="fire-link" href="#ayudar">Aprendé a prevenir <span aria-hidden="true">↓</span></a>
+      </div>
+      <span class="fire-side-label" aria-hidden="true">EL FUEGO TRANSFORMA EL PAISAJE</span>
+    </section>
+
+    <section class="help-section section-wrap" id="ayudar" aria-labelledby="help-title">
+      <div class="help-intro">
+        <p class="eyebrow eyebrow-dark">PEQUEÑAS ACCIONES, GRAN DIFERENCIA</p>
+        <h2 id="help-title">Cuidar el monte<br>también es cosa nuestra.</h2>
+        <p>En días de riesgo extremo, seguí las indicaciones oficiales de tu zona. Si ves una columna de humo, avisá a emergencias: 100 (Bomberos) o 911.</p>
+      </div>
+      <div class="action-list" aria-label="Acciones para prevenir incendios">
+        <button class="action-item" type="button" aria-pressed="false">
+          <span class="action-check" aria-hidden="true">✓</span><span><strong>No prendas fuego</strong><small>Evitá quemas, fogatas y colillas en zonas naturales.</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+        </button>
+        <button class="action-item" type="button" aria-pressed="false">
+          <span class="action-check" aria-hidden="true">✓</span><span><strong>Dejá el lugar limpio</strong><small>El vidrio y la basura también pueden generar peligro.</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+        </button>
+        <button class="action-item" type="button" aria-pressed="false">
+          <span class="action-check" aria-hidden="true">✓</span><span><strong>Elegí especies nativas</strong><small>En tu jardín, priorizá plantas de la región.</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+        </button>
+        <button class="action-item" type="button" aria-pressed="false">
+          <span class="action-check" aria-hidden="true">✓</span><span><strong>Compartí información confiable</strong><small>Difundí alertas y recomendaciones oficiales.</small></span><span class="action-arrow" aria-hidden="true">↗</span>
+        </button>
+        <div class="action-progress" aria-live="polite">
+          <span class="progress-label">MI COMPROMISO</span>
+          <div class="progress-track"><span id="progress-fill"></span></div>
+          <span id="progress-count">0 / 4</span>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer>Conocer el monte es el primer paso para protegerlo.</footer>
-  <script src="index.js" defer></script>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true">✳</span><span>BIODIVERSIDAD <span class="brand-light">DE CÓRDOBA</span><small>MONTE VIVO · ARGENTINA</small></span></a>
+    <p>Conocer el monte es el primer paso para protegerlo.</p>
+    <a class="back-top" href="#" aria-label="Volver al inicio">VOLVER ARRIBA ↑</a>
+  </footer>
 </body>
 </html>
