@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://upload.wikimedia.org">
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="style.css">
+  <script src="species-data.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -18,14 +19,17 @@
       <span>BIODIVERSIDAD <span class="brand-light">DE CÓRDOBA</span><small>MONTE VIVO · ARGENTINA</small></span>
     </a>
     <nav aria-label="Navegación principal">
+      <a href="#explorador">Buscador de animales</a>
       <a href="#especies">Especies</a>
+      <a href="#ecosistemas">Ecosistemas</a>
       <a href="#incendios">Incendios</a>
+      <a href="incendios.html">Riesgo de Incendios</a>
       <a class="nav-cta" href="#ayudar">Cómo ayudar <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-image" aria-hidden="true"></div>
       <div class="hero-content">
         <p class="eyebrow"><span class="eyebrow-line"></span> SIERRAS Y MONTE NATIVO</p>
@@ -50,6 +54,63 @@
         <div><span class="stat-mark">01</span><strong>Refugio</strong><small>para la fauna nativa</small></div>
         <div><span class="stat-mark">02</span><strong>Conexión</strong><small>entre ambientes naturales</small></div>
         <div><span class="stat-mark">03</span><strong>Equilibrio</strong><small>para la vida que compartimos</small></div>
+      </div>
+    </section>
+
+    <section class="animal-explorer" id="explorador" aria-labelledby="explorer-title">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark">EXPLORADOR DE ESPECIES</p>
+            <h2 id="explorer-title">Encontrá un animal de Córdoba</h2>
+          </div>
+          <p>Buscá por nombre común, científico, grupo o ambiente. Abrí una ficha para consultar la información disponible y sus fuentes.</p>
+        </div>
+        <div class="explorer-featured">
+          <div class="explorer-featured-heading">
+            <h3>Animales destacados</h3>
+            <button type="button" class="text-link explorer-show-all">Mostrar todos los animales <span aria-hidden="true">→</span></button>
+          </div>
+          <div id="explorer-featured-list" class="explorer-featured-list"></div>
+        </div>
+        <form class="buscador explorer-search" id="explorer-form" role="search">
+          <label for="explorer-search-input">Buscá por nombre, grupo o ambiente</label>
+          <div class="buscador-campo">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="explorer-search-input" type="search" placeholder="Ej.: Puma concolor, mamíferos, animales de las sierras..." autocomplete="off">
+            <button type="submit" aria-label="Buscar animales">Buscar <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+        <div class="explorer-filter-groups">
+          <div class="explorer-filter-row" role="group" aria-label="Filtrar por grupo de animales">
+            <span>GRUPO</span>
+            <button type="button" class="filter-button explorer-filter active" data-kind="category" data-value="mamifero" aria-pressed="true">Mamíferos</button>
+            <button type="button" class="filter-button explorer-filter active" data-kind="category" data-value="ave" aria-pressed="true">Aves</button>
+            <button type="button" class="filter-button explorer-filter active" data-kind="category" data-value="reptil" aria-pressed="true">Reptiles</button>
+            <button type="button" class="filter-button explorer-filter active" data-kind="category" data-value="anfibio" aria-pressed="true">Anfibios</button>
+            <button type="button" class="filter-button explorer-filter active" data-kind="category" data-value="pez" aria-pressed="true">Peces</button>
+          </div>
+          <div class="explorer-filter-row" role="group" aria-label="Filtrar por ambiente">
+            <span>AMBIENTE</span>
+            <button type="button" class="filter-button explorer-filter" data-kind="habitat" data-value="sierras" aria-pressed="false">Sierras</button>
+            <button type="button" class="filter-button explorer-filter" data-kind="habitat" data-value="bosques" aria-pressed="false">Bosques</button>
+            <button type="button" class="filter-button explorer-filter" data-kind="habitat" data-value="pastizales" aria-pressed="false">Pastizales</button>
+            <button type="button" class="filter-button explorer-filter" data-kind="habitat" data-value="humedales" aria-pressed="false">Humedales</button>
+            <button type="button" class="filter-button explorer-filter" data-kind="habitat" data-value="monte" aria-pressed="false">Monte</button>
+            <button type="button" class="filter-button explorer-filter" data-kind="habitat" data-value="llanuras" aria-pressed="false">Llanuras</button>
+          </div>
+        </div>
+        <div class="explorer-tools">
+          <button type="button" id="explorer-clear" class="text-link">Limpiar filtros</button>
+          <label for="explorer-sort">Ordenar</label>
+          <select id="explorer-sort">
+            <option value="alphabetical">Alfabéticamente</option>
+            <option value="threatened">Amenazadas primero</option>
+          </select>
+        </div>
+        <p id="explorer-count" class="results-count" aria-live="polite"></p>
+        <p id="explorer-empty" class="sin-resultados" role="status" hidden>No encontramos especies que coincidan con tu búsqueda. Intentá con otro nombre o modificá los filtros.</p>
+        <div id="explorer-results" class="explorer-results"></div>
       </div>
     </section>
 
@@ -83,6 +144,7 @@
             <option value="reptil">Reptiles</option>
             <option value="anfibio">Anfibios</option>
             <option value="planta">Plantas</option>
+            <option value="pez">Peces</option>
           </select>
         </div>
         <p class="sin-resultados" id="sin-resultados" role="status" hidden>No encontramos especies con esa búsqueda.</p>
@@ -98,6 +160,40 @@
       </form>
       <div id="dialog-content"></div>
     </dialog>
+
+    <section class="ecosystems-section" id="ecosistemas" aria-labelledby="ecosystems-title">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark">PAISAJES NATURALES</p>
+            <h2 id="ecosystems-title">Los ecosistemas de Córdoba</h2>
+          </div>
+          <p>Ambientes diferentes, conectados por el clima, el agua y las especies que los habitan.</p>
+        </div>
+        <div class="ecosystem-grid">
+          <article class="ecosystem-card">
+            <div class="ecosystem-image ecosystem-serrano" role="img" aria-label="Paisaje del Bosque Chaqueño Serrano"></div>
+            <div><p class="eyebrow eyebrow-dark">SIERRAS</p><h3>Bosque Chaqueño Serrano</h3><p>Se encuentra en las sierras y presenta especies como molles, cocos y quebrachos.</p><small>Molle · Coco serrano · Quebracho blanco</small></div>
+          </article>
+          <article class="ecosystem-card">
+            <div class="ecosystem-image ecosystem-espinal" role="img" aria-label="Paisaje del Espinal cordobés"></div>
+            <div><p class="eyebrow eyebrow-dark">LLANURA</p><h3>Espinal</h3><p>Ambiente de llanuras con algarrobos, chañares y espinillos.</p><small>Algarrobo blanco · Chañar · Espinillo</small></div>
+          </article>
+          <article class="ecosystem-card">
+            <div class="ecosystem-image ecosystem-seco" role="img" aria-label="Paisaje del Chaco Seco"></div>
+            <div><p class="eyebrow eyebrow-dark">CHACO</p><h3>Chaco Seco</h3><p>Se caracteriza por vegetación adaptada a condiciones de menor disponibilidad de agua.</p><small>Jarilla · Piquillín · Cardón</small></div>
+          </article>
+          <article class="ecosystem-card">
+            <div class="ecosystem-image ecosystem-pastizal" role="img" aria-label="Pastizales de altura cordobeses"></div>
+            <div><p class="eyebrow eyebrow-dark">ALTURA</p><h3>Pastizales de altura</h3><p>Presentes en sectores elevados de las sierras, con vegetación vinculada a clima y suelo serranos.</p><small>Tabaquillo · Peperina · Tomillo serrano</small></div>
+          </article>
+          <article class="ecosystem-card ecosystem-card-wide">
+            <div class="ecosystem-image ecosystem-humedal" role="img" aria-label="Humedales de Ansenuza"></div>
+            <div><p class="eyebrow eyebrow-dark">AGUA Y HUMEDAL</p><h3>Humedales de Ansenuza</h3><p>Ambientes acuáticos con flamencos, aves migratorias y vegetación adaptada a la salinidad.</p><small>Flamenco austral · Carpincho · Aves migratorias</small></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section class="fire-section" id="incendios" aria-labelledby="fire-title">
       <div class="fire-image" aria-hidden="true"></div>

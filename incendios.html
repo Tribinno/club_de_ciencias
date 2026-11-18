@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Consultá los mapas oficiales de riesgo de incendios y recomendaciones preventivas para el Valle de Punilla, Córdoba.">
+  <title>Riesgo de Incendios | Valle de Punilla</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="incendios.css">
+  <script src="datos-incendios.js" defer></script>
+  <script src="incendios.js" defer></script>
+</head>
+<body class="fire-page">
+  <header class="site-header">
+    <a class="brand" href="index.html#inicio" aria-label="Monte vivo, inicio">
+      <span class="brand-mark" aria-hidden="true">✳</span>
+      <span>BIODIVERSIDAD <span class="brand-light">DE CÓRDOBA</span><small>MONTE VIVO · ARGENTINA</small></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html#explorador">Buscador de animales</a>
+      <a href="index.html#especies">Especies</a>
+      <a href="index.html#ecosistemas">Ecosistemas</a>
+      <a href="index.html#incendios">Incendios</a>
+      <a class="nav-cta" href="index.html#inicio">Volver al inicio <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="fire-hero" aria-labelledby="fire-title">
+      <div class="fire-hero-content">
+        <p class="fire-eyebrow"><span aria-hidden="true"></span> PREVENCIÓN · VALLE DE PUNILLA</p>
+        <h1 id="fire-title">Riesgo de<br><em>incendios.</em></h1>
+        <p>Consultá mapas oficiales, entendé qué información está disponible y conocé cómo prevenir incendios forestales.</p>
+        <a class="fire-button fire-button-light" href="#mapa">Consultar mapas <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="fire-hero-note">INFORMACIÓN OFICIAL · NO REEMPLAZA A LOS ORGANISMOS DE EMERGENCIA</div>
+    </section>
+
+    <section class="fire-section fire-dashboard" aria-labelledby="dashboard-title">
+      <div class="fire-section-heading">
+        <div>
+          <p class="fire-eyebrow fire-eyebrow-dark">ESTADO DE LA INFORMACIÓN</p>
+          <h2 id="dashboard-title">Panel de consulta</h2>
+        </div>
+        <p>Los mapas se consultan directamente en sus sitios oficiales. La hora indicada es la de consulta desde esta página, no la fecha de generación de los datos.</p>
+      </div>
+
+      <div class="fire-update-card">
+        <span class="fire-status-dot" aria-hidden="true"></span>
+        <div>
+          <strong>Última solicitud al visor oficial</strong>
+          <time id="fire-last-check" datetime="">Esperando consulta…</time>
+        </div>
+        <button type="button" class="fire-button fire-button-outline" id="fire-refresh">Actualizar visor <span aria-hidden="true">↻</span></button>
+      </div>
+
+      <div class="fire-metrics">
+        <article class="fire-metric">
+          <span class="fire-metric-icon" aria-hidden="true">◉</span>
+          <h3>Peligro meteorológico · FWI</h3>
+          <p>Consultá el índice diario en el visor de IDECOR. No se replica un valor sin una fuente de datos accesible.</p>
+          <a data-source-link="fwi" href="#" target="_blank" rel="noopener noreferrer">Abrir visor FWI <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="fire-metric">
+          <span class="fire-metric-icon" aria-hidden="true">◷</span>
+          <h3>Pronóstico y condiciones</h3>
+          <p>Temperatura, humedad, viento, precipitaciones y estimaciones a 24, 48 y 72 h: consultá las fuentes oficiales.</p>
+          <a data-source-link="smn" href="#" target="_blank" rel="noopener noreferrer">Consultar estimaciones del SMN <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="fire-metric fire-metric-alert">
+          <span class="fire-metric-icon" aria-hidden="true">!</span>
+          <h3>Alertas oficiales</h3>
+          <p>No hay un feed de alertas integrado. Esto no significa que no haya alertas vigentes: verificá los canales oficiales.</p>
+          <a data-source-link="smnAlerts" href="#" target="_blank" rel="noopener noreferrer">Consultar alertas del SMN <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+      <p class="fire-data-caveat">Información meteorológica y alertas: <strong>Información temporalmente no disponible. Consultá las fuentes oficiales.</strong></p>
+    </section>
+
+    <section class="fire-section fire-map-section" id="mapa" aria-labelledby="map-title">
+      <div class="fire-section-heading">
+        <div>
+          <p class="fire-eyebrow fire-eyebrow-dark">VISOR INTERACTIVO</p>
+          <h2 id="map-title">Mapas oficiales de Punilla</h2>
+        </div>
+        <p>Elegí una capa. La cartografía y su leyenda pertenecen a IDECOR; comprobá allí la fecha de los datos y la escala de consulta.</p>
+      </div>
+
+      <div class="fire-map-tabs" role="group" aria-label="Seleccionar mapa oficial">
+        <button type="button" class="fire-map-tab is-active" data-map="territorial" aria-pressed="true">Riesgo local</button>
+        <button type="button" class="fire-map-tab" data-map="fwi" aria-pressed="false">Peligro meteorológico FWI</button>
+      </div>
+      <div class="fire-map-frame-wrap">
+        <iframe id="fire-map-frame" title="Mapa oficial de riesgo local de incendios forestales en Córdoba" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="fire-map-fallback" id="fire-map-fallback" role="status" hidden>
+          No se pudo cargar el visor integrado. Abrilo directamente en el sitio oficial.
+        </div>
+      </div>
+      <div class="fire-map-caption">
+        <p id="fire-map-description">Riesgo local territorial: una capa regional de amenaza y vulnerabilidad, distinta del índice meteorológico diario.</p>
+        <a id="fire-map-open" class="fire-button fire-button-outline" href="#" target="_blank" rel="noopener noreferrer">Abrir mapa oficial <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="fire-legend-grid">
+        <article class="fire-legend-card">
+          <h3>Riesgo local IDECOR · escala publicada</h3>
+          <p>El mapa territorial para Punilla publica tres niveles. No se les asigna un valor a las localidades desde esta página.</p>
+          <ul class="fire-legend fire-legend-official">
+            <li><span class="fire-swatch risk-low"></span><span><strong>Bajo</strong><small>Riesgo local</small></span></li>
+            <li><span class="fire-swatch risk-medium"></span><span><strong>Medio</strong><small>Riesgo local</small></span></li>
+            <li><span class="fire-swatch risk-high"></span><span><strong>Alto</strong><small>Riesgo local</small></span></li>
+          </ul>
+        </article>
+        <article class="fire-legend-card">
+          <h3>Guía preventiva de cinco colores</h3>
+          <p>Referencia general, no es la leyenda del mapa IDECOR ni una medición actual por localidad.</p>
+          <ul class="fire-legend fire-legend-guide">
+            <li><span class="fire-swatch guide-low"></span><span><strong>Verde · Bajo</strong><small>El riesgo no es cero.</small></span></li>
+            <li><span class="fire-swatch guide-moderate"></span><span><strong>Amarillo · Moderado</strong><small>Mantené las precauciones.</small></span></li>
+            <li><span class="fire-swatch guide-high"></span><span><strong>Naranja · Alto</strong><small>Evitá fuego y actividades que produzcan chispas.</small></span></li>
+            <li><span class="fire-swatch guide-very-high"></span><span><strong>Rojo · Muy alto</strong><small>Seguí restricciones e instrucciones oficiales.</small></span></li>
+            <li><span class="fire-swatch guide-extreme"></span><span><strong>Bordó · Extremo</strong><small>Priorizá la seguridad y las indicaciones de emergencia.</small></span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="fire-section fire-locality-section" aria-labelledby="locality-title">
+      <div class="fire-section-heading">
+        <div>
+          <p class="fire-eyebrow fire-eyebrow-dark">CONSULTA POR LOCALIDAD</p>
+          <h2 id="locality-title">Buscá tu localidad</h2>
+        </div>
+        <p>Seleccioná una localidad de Punilla para ver qué datos puede mostrar esta página y abrir el mapa oficial.</p>
+      </div>
+      <form class="fire-locality-search" id="fire-locality-form">
+        <label for="fire-locality-input">Localidad</label>
+        <div class="fire-locality-controls">
+          <input id="fire-locality-input" type="search" list="fire-localities" placeholder="Ej.: La Falda" autocomplete="off" required>
+          <datalist id="fire-localities"></datalist>
+          <button type="submit" class="fire-button">Consultar <span aria-hidden="true">→</span></button>
+        </div>
+        <p id="fire-locality-error" class="fire-inline-error" role="status" hidden>Elegí o escribí una de las localidades del Valle de Punilla.</p>
+      </form>
+      <article class="fire-locality-result" id="fire-locality-result" aria-live="polite">
+        <div class="fire-locality-placeholder">
+          <span aria-hidden="true">⌖</span>
+          <p>Elegí una localidad para consultar la disponibilidad de información oficial.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="fire-section fire-alert-section" aria-labelledby="alerts-title">
+      <div class="fire-section-heading">
+        <div>
+          <p class="fire-eyebrow fire-eyebrow-dark">COMUNICADOS</p>
+          <h2 id="alerts-title">Alertas vigentes</h2>
+        </div>
+        <p>Esta página no recibe comunicados en tiempo real. Consultá directamente a los organismos; una alerta preventiva no confirma un incendio.</p>
+      </div>
+      <article class="fire-alert-empty" role="status">
+        <span class="fire-alert-symbol" aria-hidden="true">!</span>
+        <div>
+          <h3>Sin feed oficial conectado</h3>
+          <p>No es posible confirmar desde este sitio si hay alertas vigentes. Revisá las publicaciones oficiales antes de realizar actividades al aire libre.</p>
+          <div class="fire-source-links">
+            <a data-source-link="snmf" href="#" target="_blank" rel="noopener noreferrer">Servicio Nacional de Manejo del Fuego <span aria-hidden="true">↗</span></a>
+            <a data-source-link="smnAlerts" href="#" target="_blank" rel="noopener noreferrer">Alertas meteorológicas del SMN <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+      <p class="fire-history-note">El mapa de áreas afectadas por incendios es una capa histórica: no confirma un incendio activo. <a data-source-link="affected" href="#" target="_blank" rel="noopener noreferrer">Consultar fuente IDECOR <span aria-hidden="true">↗</span></a></p>
+    </section>
+
+    <section class="fire-prevention" aria-labelledby="prevention-title">
+      <div class="fire-prevention-inner">
+        <div class="fire-section-heading">
+          <div>
+            <p class="fire-eyebrow">CUIDAR ES PREVENIR</p>
+            <h2 id="prevention-title">Cada acción cuenta.</h2>
+          </div>
+          <p>Respetá siempre las restricciones vigentes y las indicaciones de las autoridades locales.</p>
+        </div>
+        <div class="fire-prevention-grid">
+          <article><span aria-hidden="true">01</span><p>No enciendas fogatas fuera de los lugares habilitados.</p></article>
+          <article><span aria-hidden="true">02</span><p>No arrojes colillas ni fósforos encendidos.</p></article>
+          <article><span aria-hidden="true">03</span><p>No quemes residuos, pastizales ni restos de poda.</p></article>
+          <article><span aria-hidden="true">04</span><p>No dejes basura; algunos residuos pueden iniciar o agravar un fuego.</p></article>
+          <article><span aria-hidden="true">05</span><p>Evitá actividades que produzcan chispas cuando haya peligro.</p></article>
+          <article><span aria-hidden="true">06</span><p>Avisá de inmediato ante humo o fuego y seguí las indicaciones oficiales.</p></article>
+        </div>
+        <aside class="fire-emergency">
+          <div>
+            <p class="fire-eyebrow">ANTE UNA EMERGENCIA</p>
+            <h3>Alejate de la zona de peligro.</h3>
+            <p>No te acerques ni intentes combatir el fuego. Seguí las instrucciones de Bomberos y Defensa Civil.</p>
+          </div>
+          <a class="fire-call" href="tel:100" aria-label="Llamar a Bomberos al 100"><small>BOMBEROS</small><strong>100</strong><span>Llamar <span aria-hidden="true">↗</span></span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="fire-section fire-sources" aria-labelledby="sources-title">
+      <div class="fire-section-heading">
+        <div>
+          <p class="fire-eyebrow fire-eyebrow-dark">FUENTES Y ALCANCE</p>
+          <h2 id="sources-title">Verificá la información</h2>
+        </div>
+        <p>Los mapas son publicados por organismos oficiales. Esta página no predice el peligro ni sustituye a Bomberos, Defensa Civil o autoridades provinciales.</p>
+      </div>
+      <ul class="fire-source-list">
+        <li><a data-source-link="territorial" href="#" target="_blank" rel="noopener noreferrer">IDECOR · Mapa de riesgo local para incendios forestales <span aria-hidden="true">↗</span></a><span>Cobertura de Punilla; tres niveles territoriales.</span></li>
+        <li><a data-source-link="fwiPage" href="#" target="_blank" rel="noopener noreferrer">IDECOR · Índice meteorológico de peligro (FWI) diario <span aria-hidden="true">↗</span></a><span>Índice meteorológico, separado del riesgo territorial.</span></li>
+        <li><a data-source-link="snmf" href="#" target="_blank" rel="noopener noreferrer">Argentina.gob.ar · Mapa de peligro de incendio <span aria-hidden="true">↗</span></a><span>Metodología e información del Servicio Nacional de Manejo del Fuego.</span></li>
+        <li><a data-source-link="smn" href="#" target="_blank" rel="noopener noreferrer">SMN · Estimaciones de peligro de incendio <span aria-hidden="true">↗</span></a><span>Estimaciones a 24, 48 y 72 horas indicadas por el SNMF.</span></li>
+        <li><a data-source-link="affected" href="#" target="_blank" rel="noopener noreferrer">IDECOR · Áreas afectadas por incendios <span aria-hidden="true">↗</span></a><span>Información histórica; no indica por sí sola un incendio activo.</span></li>
+      </ul>
+      <p class="fire-disclaimer">La disponibilidad, actualización, cobertura y escala de los datos dependen de cada fuente. En caso de emergencia, llamá al 100 y seguí las instrucciones de los organismos oficiales.</p>
+    </section>
+  </main>
+
+  <footer class="fire-footer">
+    <a class="brand" href="index.html#inicio"><span class="brand-mark" aria-hidden="true">✳</span><span>BIODIVERSIDAD <span class="brand-light">DE CÓRDOBA</span><small>MONTE VIVO · ARGENTINA</small></span></a>
+    <a href="index.html#inicio">Volver al inicio ↑</a>
+  </footer>
+</body>
+</html>
