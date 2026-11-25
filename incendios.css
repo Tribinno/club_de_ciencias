@@ -141,7 +141,7 @@
 .fire-source-list li > span { color: var(--fire-muted); font-size: 11px; line-height: 1.6; }
 .fire-disclaimer { margin: 22px 0 0; color: var(--fire-muted); font-size: 11px; line-height: 1.7; }
 .fire-footer { display: flex; min-height: 84px; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 7%; border-top: 1px solid var(--fire-line); }
-.fire-footer > a:last-child { color: #47614b; font-size: 11px; font-weight: 700; text-decoration: none; }
+.fire-footer > a:nth-child(2), .fire-footer > a:last-child { color: #47614b; font-size: 11px; font-weight: 700; text-decoration: none; }
 
 @media (max-width: 900px) {
   .fire-page .site-header { height: auto; min-height: 82px; gap: 14px; }
@@ -192,7 +192,7 @@
   .fire-call { width: 100%; grid-template-columns: auto auto 1fr; align-items: center; justify-items: start; gap: 10px; }
   .fire-call strong { font-size: 23px; }
   .fire-source-list li { grid-template-columns: 1fr; gap: 5px; }
-  .fire-footer { padding: 18px 6%; }
+  .fire-footer { flex-wrap: wrap; padding: 18px 6%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .fire-page *, .fire-page *::before, .fire-page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }

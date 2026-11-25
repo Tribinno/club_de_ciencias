@@ -20,6 +20,7 @@ button, input { font: inherit; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid #d59a53; outline-offset: 4px; }
 .site-header { height: 82px; padding: 0 7.3%; display: flex; align-items: center; justify-content: space-between; background: var(--paper); }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .13em; line-height: 1.15; }
+.brand-logo { display: block; width: 48px; height: 48px; flex: 0 0 48px; object-fit: contain; }
 .brand-mark { display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid #93a081; border-radius: 50%; color: var(--moss); font-size: 21px; }
 .brand-light { font-weight: 400; }
 .brand small { display: block; margin-top: 5px; color: #77796f; font-size: 8px; font-weight: 600; letter-spacing: .2em; }
@@ -147,6 +148,16 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .footer-brand small { color: #adb6a6; font-size: 7px; }
 .site-footer > p { margin: 0; color: #c3cabe; font: italic 13px var(--serif); }
 .back-top { color: #c3cabe; font-size: 8px; font-weight: 700; letter-spacing: .13em; text-decoration: none; }
+.footer-instagram { color: #c3cabe; font-size: 10px; font-weight: 600; text-decoration: none; }
+.footer-instagram:hover { color: white; }
+
+.about-section { padding: 82px 0; background: #e9ebdf; }
+.about-inner { display: grid; grid-template-columns: .9fr 1.1fr; gap: 12%; align-items: center; }
+.about-inner h2 { max-width: 430px; margin: 14px 0 0; font: 500 clamp(36px, 4.2vw, 51px)/1.15 var(--serif); letter-spacing: -.025em; }
+.about-copy { max-width: 520px; color: #626b60; font-size: 12px; line-height: 1.8; }
+.about-copy p { margin: 0 0 14px; }
+.about-instagram { margin-top: 6px; border-color: #9fa995; color: var(--green); background: transparent; }
+.about-instagram:hover { color: white; background: var(--green); }
 
 @media (min-width: 1400px) {
   .hero { min-height: 680px; }
@@ -160,11 +171,13 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .card-content > p:not(.scientific) { min-height: 60px; }
   .fire-content { padding-right: 12%; padding-left: 10%; }
   .help-section { gap: 7%; }
+  .about-inner { gap: 7%; }
 }
 @media (max-width: 600px) {
   html { scroll-padding-top: 15px; }
   .site-header { height: auto; min-height: 74px; padding: 13px 6%; align-items: flex-start; gap: 13px; }
   .brand { gap: 7px; font-size: 10px; }
+  .brand-logo { width: 38px; height: 38px; flex-basis: 38px; }
   .brand-mark { width: 30px; height: 30px; font-size: 18px; }
   .brand small { font-size: 6px; }
   .site-header nav { justify-content: flex-end; flex-wrap: wrap; gap: 8px 14px; padding-top: 5px; }
@@ -205,6 +218,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .fire-side-label { top: 14%; right: 4%; }
   .help-section { grid-template-columns: 1fr; gap: 25px; padding-top: 70px; padding-bottom: 75px; }
   .help-intro h2 { font-size: 39px; }
+  .about-section { padding: 65px 0; }
+  .about-inner { grid-template-columns: 1fr; gap: 20px; }
+  .about-inner h2 { font-size: 39px; }
   .action-item { gap: 9px; }
   .action-item strong { font-size: 14px; }
   .action-item small { font-size: 8px; }
